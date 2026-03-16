@@ -21,7 +21,7 @@ streamlit run app.py
 4. User question is embedded and matched against chunks
 5. Top 4 chunks + question go to Gemini 2.5 Flash
 6. Gemini answers based only on the retrieved context
-```
+
 
 Final project structure:
 ```
@@ -32,3 +32,4 @@ ai-research-explainer/
 ├── utils.py
 ├── requirements.txt
 └── README.md
+```
