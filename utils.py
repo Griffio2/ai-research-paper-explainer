@@ -7,9 +7,14 @@ from langchain_core.prompts import PromptTemplate
 from langchain_core.runnables import RunnablePassthrough
 from langchain_core.output_parsers import StrOutputParser
 from dotenv import load_dotenv
+import streamlit as st
 
-load_dotenv()
+load_dotenv()  
 
+if "GEMINI_API_KEY" in st.secrets:
+    os.environ["GEMINI_API_KEY"] = st.secrets["GEMINI_API_KEY"]
+    os.environ["GOOGLE_API_KEY"] = st.secrets["GEMINI_API_KEY"]
+    
 def load_and_chunk_pdf(file_path):
 
     loader = PyPDFLoader(file_path)
