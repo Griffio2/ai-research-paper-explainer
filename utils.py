@@ -11,18 +11,12 @@ import streamlit as st
 
 load_dotenv()
 
-# Handle API key for both local and Streamlit Cloud
 try:
-    if "GEMINI_API_KEY" in st.secrets:
-        os.environ["GEMINI_API_KEY"] = st.secrets["GEMINI_API_KEY"]
-        os.environ["GOOGLE_API_KEY"] = st.secrets["GEMINI_API_KEY"]
+    if "GOOGLE_API_KEY" in st.secrets:
+        os.environ["GOOGLE_API_KEY"] = st.secrets["GOOGLE_API_KEY"]
 except Exception:
-    pass  # Running locally, load_dotenv() already handled it  
+    pass
 
-if "GEMINI_API_KEY" in st.secrets:
-    os.environ["GEMINI_API_KEY"] = st.secrets["GEMINI_API_KEY"]
-    os.environ["GOOGLE_API_KEY"] = st.secrets["GEMINI_API_KEY"]
-    
 def load_and_chunk_pdf(file_path):
 
     loader = PyPDFLoader(file_path)
