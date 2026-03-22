@@ -33,13 +33,11 @@ def load_and_chunk_pdf(file_path):
     return chunks
 
 def build_vector_store(chunks):
-
     embeddings = GoogleGenerativeAIEmbeddings(
-        model="models/gemini-embedding-001"
+        model="models/gemini-embedding-001",
+        google_api_key=os.environ.get("GOOGLE_API_KEY")
     )
-
-    vector_store = FAISS.from_documents(chunks,embeddings)
-
+    vector_store = FAISS.from_documents(chunks, embeddings)
     return vector_store
 
 def build_rag_chain(vector_store):
