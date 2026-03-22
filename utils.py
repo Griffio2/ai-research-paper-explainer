@@ -9,7 +9,15 @@ from langchain_core.output_parsers import StrOutputParser
 from dotenv import load_dotenv
 import streamlit as st
 
-load_dotenv()  
+load_dotenv()
+
+# Handle API key for both local and Streamlit Cloud
+try:
+    if "GEMINI_API_KEY" in st.secrets:
+        os.environ["GEMINI_API_KEY"] = st.secrets["GEMINI_API_KEY"]
+        os.environ["GOOGLE_API_KEY"] = st.secrets["GEMINI_API_KEY"]
+except Exception:
+    pass  # Running locally, load_dotenv() already handled it  
 
 if "GEMINI_API_KEY" in st.secrets:
     os.environ["GEMINI_API_KEY"] = st.secrets["GEMINI_API_KEY"]
